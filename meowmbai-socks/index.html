@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Socks for Meowmbai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: giddy, sweet, merch-shop playful
+   IDEA: a sock shop counter where the sock spins on a pink pedestal
+   PICTURE: the live sock itself, big, wearing a real Mumbai cat's face
+   COLOUR and TYPE: bubblegum pink field, berry ink, cream cards; Fredoka + Nunito
+   LAYOUT: title band, then sticky sock stage left and four steps right; stacks on phones */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffd9e8,#2a0f22);--bg2:light-dark(#ffc4dc,#3a1530);
+--card:light-dark(#fffafc,#3d1733);--ink:light-dark(#4a1838,#ffe6f1);--soft:light-dark(#8a4a70,#e9b3cc);
+--pink:#ff6fa5;--pink2:light-dark(#ffb3cf,#7a2d5c);--line:light-dark(#ffd0e2,#5a2449)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip;
+background-image:radial-gradient(circle at 20px 20px,var(--bg2) 5px,transparent 6px),radial-gradient(circle at 60px 60px,var(--bg2) 5px,transparent 6px);background-size:80px 80px}
+h1,h2,h3,.f{font-family:Fredoka,Nunito,sans-serif}
+header{text-align:center;padding:clamp(28px,5vw,56px) 16px 8px}
+header h1{font-size:clamp(40px,7vw,72px);line-height:1.02;margin:0;font-weight:700;text-wrap:balance;color:var(--ink)}
+header h1 .paw{display:inline-block;width:.7em;height:.7em;vertical-align:.02em;margin:0 .1em}
+.by{display:inline-block;margin-top:14px;background:var(--card);border:3px solid var(--pink);border-radius:999px;padding:6px 18px;font:600 17px Fredoka,sans-serif}
+.lede{margin:12px auto 0;max-width:560px;color:var(--soft);font-weight:700}
+main{max-width:1180px;margin:0 auto;padding:20px max(4vw,14px) 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px;align-items:start}
+.stage{position:sticky;top:16px;background:var(--card);border-radius:36px;padding:22px;box-shadow:0 10px 0 var(--pink2);text-align:center}
+.pedestal{position:relative;border-radius:28px;background:radial-gradient(circle at 50% 55%,var(--pink2) 0 48%,transparent 49%),linear-gradient(var(--bg),var(--bg));aspect-ratio:1/1.05;display:grid;place-items:center;overflow:hidden}
+#big{width:92%;height:92%;filter:drop-shadow(0 14px 14px rgba(74,24,56,.25));animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-1.5deg)}}
+@media (prefers-reduced-motion:reduce){#big{animation:none}}
+.sum{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:16px 0 12px}
+.sum span{background:var(--bg);border-radius:999px;padding:4px 12px;font-weight:800;font-size:14px;white-space:nowrap}
+.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{min-height:46px;border-radius:999px;border:0;padding:0 22px;font:600 17px Fredoka,sans-serif;background:var(--pink);color:#fff;box-shadow:0 4px 0 #d94d85}
+.btn.alt{background:var(--bg);color:var(--ink);box-shadow:0 4px 0 var(--pink2)}
+.btn:active{transform:translateY(3px);box-shadow:none}
+.note{font-size:13px;color:var(--soft);margin:12px 0 0;min-height:1.2em}
+.steps{display:grid;gap:18px}
+.step{background:var(--card);border-radius:30px;padding:20px 20px 22px;box-shadow:0 6px 0 var(--pink2)}
+.step h2{margin:0 0 4px;font-size:24px;display:flex;align-items:center;gap:10px}
+.step h2 b{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--pink);color:#fff;font-size:19px;flex:none}
+.step p{margin:0 0 14px;color:var(--soft);font-size:15px}
+.row{display:grid;gap:12px}
+.len{grid-template-columns:1fr 1fr}
+.opt{border:3px solid var(--line);background:var(--bg);border-radius:22px;padding:10px;text-align:center;font-weight:800;min-height:44px;transition:transform .15s}
+.opt:hover{transform:translateY(-2px)}
+.opt[aria-pressed=true]{border-color:var(--pink);background:var(--card);box-shadow:0 0 0 4px var(--pink2)}
+.opt:focus-visible,.sw:focus-visible,.cat:focus-visible,input:focus-visible,.btn:focus-visible,.tog:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.opt svg{width:100%;height:120px;display:block}
+.opt small{display:block;font-weight:600;color:var(--soft);font-size:13px;line-height:1.35;margin-top:2px}
+.opt .t{font:600 17px Fredoka,sans-serif}
+.cols{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.sw{width:58px;height:58px;border-radius:50%;border:4px solid var(--card);box-shadow:0 0 0 3px var(--line);position:relative}
+.sw[aria-pressed=true]{box-shadow:0 0 0 4px var(--pink)}
+.sw[aria-pressed=true]::after{content:"";position:absolute;inset:-12px auto auto 50%;translate:-50% 0;width:14px;height:10px;background:var(--pink);clip-path:polygon(0 0,100% 0,50% 100%)}
+.swl{font-size:13px;font-weight:800;text-align:center;margin-top:4px}
+.sub{margin:4px 0 8px;font-size:17px}.part{margin-top:16px}.part h3{margin:0 0 8px;font-size:17px}.part h3 small{font:700 13px Nunito,sans-serif;color:var(--soft);margin-left:6px}
+.mini{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;max-width:460px}.ms{width:100%;aspect-ratio:1;height:auto;border-radius:50%;border:3px solid var(--card);box-shadow:0 0 0 2px var(--line);padding:0;position:relative}.ms[aria-pressed=true]{box-shadow:0 0 0 4px var(--pink)}.ms.match{background:conic-gradient(var(--c) 0 50%,var(--card) 0)!important;font:800 9px Nunito;color:var(--ink)}
+.ms:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.tog{display:flex;align-items:center;gap:10px;border:0;background:none;padding:6px 0;font-weight:800;min-height:44px;margin-left:auto}
+.tog i{width:50px;height:28px;border-radius:99px;background:var(--line);position:relative;transition:background .2s}
+.tog i::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .2s}
+.tog[aria-pressed=true] i{background:var(--pink)}.tog[aria-pressed=true] i::after{left:25px}
+.styles{grid-template-columns:repeat(var(--n,4),minmax(0,1fr))}
+@media(max-width:1000px){.styles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cat{border:0;background:none;padding:4px;text-align:center;font-weight:800;font-size:13px;line-height:1.25}
+.cat .ph{display:grid;place-items:end center;width:100%;aspect-ratio:1;border-radius:50%;background:var(--bg);box-shadow:0 0 0 3px var(--line);overflow:hidden;transition:transform .15s}.cat img{width:86%;height:86%;object-fit:contain;object-position:bottom;display:block}
+.cat:hover .ph{transform:scale(1.05) rotate(-3deg)}
+.cat[aria-pressed=true] .ph{box-shadow:0 0 0 5px var(--pink);background:var(--pink2)}
+.cat>span:last-child{display:block;margin-top:6px}.cat:disabled{opacity:.35;cursor:not-allowed}.cat:disabled .ph{filter:grayscale(1)}
+label.nm{display:block;margin-top:16px;font-weight:800}
+.nmrow{display:flex;gap:8px;margin-top:6px}
+input{flex:1;font:700 16px Nunito,sans-serif;color:var(--ink);background:var(--bg);border:3px solid var(--line);border-radius:16px;padding:10px 14px;min-height:48px}
+.cnt{align-self:center;font-size:13px;color:var(--soft);font-weight:800;width:44px;text-align:right}
+footer{text-align:center;padding:10px 16px 40px;color:var(--soft);font-weight:700;font-size:14px}
+footer b{color:var(--ink)}
+@media(max-width:860px){main{grid-template-columns:1fr}.stage{position:relative;top:0}.pedestal{aspect-ratio:1.25/1}}
+@media(max-width:480px){.mini{grid-template-columns:repeat(6,minmax(0,1fr));max-width:280px}.cats{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.sw{width:48px;height:48px}.tog{margin-left:0}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Socks for Meowmbai <svg class="paw" viewBox="0 0 40 40" aria-hidden="true"><g fill="#ff6fa5"><ellipse cx="20" cy="27" rx="10" ry="8.5"/><circle cx="8" cy="15" r="4.5"/><circle cx="16" cy="8" r="4.5"/><circle cx="25" cy="8" r="4.5"/><circle cx="33" cy="15" r="4.5"/></g></svg></h1>
+  <div class="by">designed by dr. deeya shah</div>
+  <p class="lede">Real faces of real Mumbai street cats, on your feet. Build your pair in four tiny steps.</p>
+</header>
+
+<main>
+  <section class="stage" aria-label="Your sock">
+    <div class="pedestal"><svg id="big" role="img" aria-label="Preview of your sock"></svg></div>
+    <div class="sum" id="sum"></div>
+    <div class="acts">
+      <button class="btn" id="copy" type="button">Copy my design</button>
+      <button class="btn alt" id="rand" type="button">Surprise me</button>
+    </div>
+    <p class="note" id="note" aria-live="polite"></p>
+  </section>
+
+  <div class="steps">
+    <section class="step">
+      <h2><b>1</b>How tall?</h2>
+      <p>Pick your length.</p>
+      <div class="row len" id="len"></div>
+    </section>
+    <section class="step">
+      <h2><b>2</b>Colours</h2>
+      <p>Pick the sock colour, then style the toe, heel and cuff.</p>
+      <h3 class="sub">Base</h3>
+      <div class="cols" id="cols"></div>
+      <div id="parts"></div>
+    </section>
+    <section class="step">
+      <h2><b>3</b>Style</h2>
+      <p>Where the face and the name sit.</p>
+      <div class="row styles" id="styles"></div>
+    </section>
+    <section class="step">
+      <h2><b>4</b>Choose your cat</h2>
+      <p>Every face is a real cat from the streets of Mumbai.</p>
+      <p class="note" id="catnote" style="margin:-6px 0 10px"></p>
+      <div class="row cats" id="cats"></div>
+      <label class="nm" for="nm">Name on the socks</label>
+      <div class="nmrow"><input id="nm" maxlength="12" autocomplete="off" autocapitalize="none" placeholder="cat's name" style="text-transform:lowercase"><span class="cnt" id="cnt"></span></div>
+      <div class="part"><h3>Name colour<small id="ncl"></small></h3><div class="mini" id="ncols"></div></div>
+    </section>
+  </div>
+</main>
+
+<footer><b>Socks for Meowmbai</b> · designed by dr. deeya shah · made with love for the cats of Mumbai</footer>
+
+<script>
+{
+const CATS=[
+ {id:'146',name:'Tabby',fur:'#8a6a4f',r:.817,eat:1.179},
+ {id:'160',name:'Stripes',fur:'#9b7d5e',r:1.118},
+ {id:'164',name:'Calico',fur:'#f3ede6',r:1.088,eat:1.6},
+ {id:'167',name:'Grey',fur:'#7d7a74',r:.786,eat:1.672},
+ {id:'169',name:'Tortie',fur:'#efe8de',r:.761},
+ {id:'175',name:'Ginger',fur:'#e98a2c',r:.761},
+ {id:'189',name:'Snowy',fur:'#a08466',r:.919},
+ {id:'190',name:'Cream',fur:'#e8b778',r:.892}
+];
+const COLS=[
+ {k:'black',label:'Black',c:'#221d24',dark:true},
+ {k:'navy',label:'Navy blue',c:'#1f2b57',dark:true},
+ {k:'white',label:'White',c:'#f7f4f0',dark:false},
+ {k:'beige',label:'Beige',c:'#e3cfb0',dark:false},
+ {k:'pink',label:'Pink',c:'#f7a8c4',dark:false}
+];
+const ACC=[
+ {k:'match',label:'Same as sock'},
+ {k:'pink',label:'Pink',c:'#ff8fb8'},{k:'black',label:'Black',c:'#221d24'},{k:'navy',label:'Navy',c:'#1f2b57'},
+ {k:'white',label:'White',c:'#f7f4f0'},{k:'beige',label:'Beige',c:'#e3cfb0'},{k:'red',label:'Red',c:'#d23a4b'},
+ {k:'mustard',label:'Mustard',c:'#e6ad33'},{k:'mint',label:'Mint',c:'#9ad9c0'},{k:'lavender',label:'Lavender',c:'#c4b0ea'},
+ {k:'sky',label:'Sky blue',c:'#98c6ef'},{k:'grey',label:'Grey',c:'#9b9aa3'}
+];
+const PARTS=[{k:'toe',t:'Toe',s:'the tip'},{k:'heel',t:'Heel',s:'the ankle part'},{k:'cuff',t:'Cuff',s:'the ribbed top'}];
+const STYLES={
+ high:[
+  {k:'top',t:'Face Up Top',d:'Face under the cuff, name on the side above the sole'},
+  {k:'tag',t:'Name Tag',d:'Name under the cuff, face on the front above the foot'},
+  {k:'long',t:'Long Cat',d:'Name under the cuff, the whole cat eating from its plate'},
+  {k:'party',t:'Cat Party',d:'Faces all over, name under the cuff'}],
+ ankle:[
+  {k:'peek',t:'Peekaboo',d:'Face on top of the foot, name under the cuff'},
+  {k:'sole',t:'Sole Cat',d:'Face on the sole, name on the front of the foot'},
+  {k:'party',t:'Cat Party',d:'Faces all over, name under the cuff'}]
+};
+const DEF={len:'high',col:'navy',style:'top',cat:'175',name:'',toe:'pink',heel:'pink',cuff:'pink',ncol:'pink'};
+let S={...DEF};
+try{const j=JSON.parse(localStorage.getItem('meowsocks3')||'null');if(j)S={...S,...j}}catch(e){}
+if(!STYLES[S.len].some(x=>x.k===S.style))S.style=STYLES[S.len][0].k;
+if(S.style==='long'&&!(CATS.find(c=>c.id===S.cat)||{}).eat)S.cat='164';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cat=()=>CATS.find(c=>c.id===S.cat)||CATS[0];
+const col=()=>COLS.find(c=>c.k===S.col)||COLS[0];
+const acc=k=>{const a=ACC.find(x=>x.k===S[k])||ACC[0];return a.k==='match'?col().c:a.c};
+const isDark=hex=>{const n=parseInt(hex.slice(1),16);return ((n>>16)*.3+((n>>8)&255)*.59+(n&255)*.11)<140};
+const nameText=()=>(S.name.trim()||cat().name).toLowerCase();
+const NCOL=ACC.filter(a=>a.k!=='match');
+const ncol=()=>(NCOL.find(a=>a.k===S.ncol)||NCOL[0]).c;
+
+const FOOT='Q187 262 206 276 L262 300 Q300 316 298 352 Q295 390 252 390 L136 390 Q84 390 84 342 Q84 318 89 296 Z';
+const shape=len=>len==='high'?'M93 14 L191 14 L188 236 '+FOOT:'M91 222 L191 222 L189 240 '+FOOT;
+const VB={high:'60 4 258 398',ankle:'60 206 258 196',sole:'60 206 258 326'};
+const vb=(len,st)=>len==='ankle'&&st==='sole'?VB.sole:VB[len];
+
+function face(cx,cy,h){const c=cat(),w=h*c.r;return `<image href="cats/${c.id}.webp" x="${(cx-w/2).toFixed(1)}" y="${(cy-h/2).toFixed(1)}" width="${w.toFixed(1)}" height="${h}"/>`}
+function label(x,y,txt,w,max,fill,rot){
+  const fs=Math.min(max,w/(Math.max(txt.length,3)*.62));
+  return `<text transform="translate(${x} ${y})${rot?' rotate('+rot+')':''}" text-anchor="middle" dominant-baseline="central" font-family="Fredoka,sans-serif" font-weight="700" font-size="${fs.toFixed(1)}" fill="${fill}" letter-spacing="1.2">${esc(txt)}</text>`;
+}
+function underCuff(len,txt){return label(141,len==='high'?72:262,txt,92,20,ncol(),0)}
+function eatCat(cx,bottom,w){const c=cat(),h=w/c.eat;return `<image href="cats/eat${c.id}.webp" x="${(cx-w/2).toFixed(1)}" y="${(bottom-h).toFixed(1)}" width="${w}" height="${h.toFixed(1)}"/>`}
+function art(len,style){
+  const txt=nameText(),nc=ncol();
+  if(style==='party')return `<rect x="60" y="0" width="260" height="400" fill="url(#pp)"/>`+underCuff(len,txt);
+  if(len==='high'){
+    if(style==='top')return face(141,106,92)+label(196,372,txt,96,22,nc,0);
+    if(style==='tag')return underCuff(len,txt)+face(168,258,72);
+    if(style==='long')return underCuff(len,txt)+(cat().eat?eatCat(178,388,Math.min(196,150*cat().eat)):'');
+  }else{
+    if(style==='peek')return underCuff(len,txt)+face(218,314,58);
+    if(style==='sole')return label(214,318,txt,54,16,nc,22);
+  }
+  return '';
+}
+function sole(u){
+  const c=col(),sp='M112 436 Q88 436 88 468 Q88 500 114 502 L248 508 Q298 508 298 470 Q298 430 250 432 Z';
+  return `<defs><clipPath id="so${u}"><path d="${sp}"/></clipPath></defs><g clip-path="url(#so${u})"><path d="${sp}" fill="${c.c}"/><rect x="80" y="420" width="44" height="100" fill="${acc('heel')}"/><rect x="262" y="420" width="44" height="100" fill="${acc('toe')}"/><path d="M124 420 V520 M262 420 V520" stroke="rgba(0,0,0,.28)" stroke-width="1.4" stroke-dasharray="2.5 2"/>${face(192,468,66)}<rect x="80" y="420" width="230" height="100" fill="url(#kn${u})"/><rect x="80" y="420" width="230" height="100" fill="url(#fg2${u})"/></g><path d="${sp}" fill="none" stroke="rgba(30,10,25,.35)" stroke-width="1.6"/><text x="193" y="524" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="9" fill="rgba(74,24,56,.55)">underneath</text>`;
+}
+function sock(len,style,u){
+  const c=col(),p=shape(len),cc=acc('cuff'),cy0=len==='high'?14:222,ch=len==='high'?40:26;
+    const ct=cat(),pat=`<pattern id="pp" width="64" height="64" patternUnits="userSpaceOnUse"><image href="cats/${ct.id}.webp" x="4" y="4" width="${(26*ct.r).toFixed(1)}" height="26" transform="rotate(-9 17 17)"/><image href="cats/${ct.id}.webp" x="36" y="36" width="${(26*ct.r).toFixed(1)}" height="26" transform="rotate(8 49 49)"/></pattern>`;
+  let defs=`<clipPath id="sc"><path d="${p}"/></clipPath>${pat}
+  <pattern id="kn" width="5" height="6" patternUnits="userSpaceOnUse"><path d="M0 0 L2.5 5 L5 0" fill="none" stroke="rgba(0,0,0,.2)" stroke-width=".9"/><path d="M.7 0 L2.5 3.8" stroke="rgba(255,255,255,.14)" stroke-width=".8"/></pattern>
+  <pattern id="rb" width="7" height="10" patternUnits="userSpaceOnUse"><rect width="3" height="10" fill="rgba(0,0,0,.16)"/><rect x="3.5" width="1.2" height="10" fill="rgba(255,255,255,.18)"/></pattern>
+  <linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="86" x2="194" y1="0" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".38"/><stop offset=".22" stop-color="#fff" stop-opacity=".05"/><stop offset=".45" stop-color="#fff" stop-opacity=".16"/><stop offset=".8" stop-color="#000" stop-opacity=".06"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+  <linearGradient id="fg" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="282" y2="392"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".34"/></linearGradient>
+  <linearGradient id="lmg" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="230" y2="310"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient><mask id="lm"><rect x="0" y="0" width="400" height="400" fill="url(#lmg)"/></mask>
+  <linearGradient id="fg2" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="430" y2="510"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".22"/></linearGradient>
+  <filter id="nz" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .55 0"/></filter>`;
+  defs=defs.replace(/id="(\w+)"/g,`id="$1${u}"`).replace(/url\(#(\w+)\)/g,`url(#$1${u})`);
+  const body=`<path d="${p}" fill="${c.c}"/>
+   <path d="M60 286 Q104 300 124 334 Q140 362 144 400 L60 400Z" fill="${acc('heel')}"/>
+   <path d="M60 286 Q104 300 124 334 Q140 362 144 400" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="1.4" stroke-dasharray="2.5 2"/>
+   <path d="M262 288 Q242 330 252 400 L330 400 L330 288Z" fill="${acc('toe')}"/>
+   <path d="M262 288 Q242 330 252 400" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="1.4" stroke-dasharray="2.5 2"/>
+   ${art(len,style)}
+   <rect x="60" y="${cy0}" width="260" height="${ch}" fill="${cc}"/><rect x="60" y="${cy0}" width="260" height="${ch}" fill="url(#rb)"/>
+   <rect x="60" y="${cy0+ch-3}" width="260" height="5" fill="rgba(0,0,0,.18)"/>
+   <rect x="60" y="0" width="260" height="400" fill="url(#kn)"/>
+   <rect x="60" y="0" width="260" height="400" filter="url(#nz)" opacity=".18" style="mix-blend-mode:overlay"/>
+   ${len==='high'?'<rect x="86" y="0" width="108" height="320" fill="url(#lg)" mask="url(#lm)"/>':''}
+   <path d="M60 282 L330 282 L330 400 L60 400Z" fill="url(#fg)"/>`.replace(/url\(#(\w+)\)/g,`url(#$1${u})`);
+  return `<defs>${defs}</defs><g clip-path="url(#sc${u})">${body}</g><path d="${p}" fill="none" stroke="rgba(30,10,25,.35)" stroke-width="1.6" stroke-linejoin="round"/>`+(len==='ankle'&&style==='sole'?sole(u):'');
+}
+
+function draw(){
+  const big=$('big');big.setAttribute('viewBox',vb(S.len,S.style));big.innerHTML=sock(S.len,S.style,'B');
+  $('len').innerHTML=['high','ankle'].map(l=>`<button class="opt" type="button" data-len="${l}" aria-pressed="${S.len===l}"><svg viewBox="${VB[l]}" aria-hidden="true">${sock(l,STYLES[l][0].k,'L'+l)}</svg><span class="t">${l==='high'?'High socks':'Ankle socks'}</span></button>`).join('');
+  $('cols').innerHTML=COLS.map(c=>`<div><button class="sw" type="button" data-col="${c.k}" aria-pressed="${S.col===c.k}" aria-label="${c.label}" style="background:${c.c}"></button><div class="swl">${c.label}</div></div>`).join('');
+  $('parts').innerHTML=PARTS.map(pt=>{const cur=ACC.find(a=>a.k===S[pt.k])||ACC[0];return `<div class="part"><h3>${pt.t}<small>${pt.s} · ${cur.label}</small></h3><div class="mini">`+ACC.map(a=>`<button class="ms${a.k==='match'?' match':''}" type="button" data-part="${pt.k}" data-acc="${a.k}" aria-pressed="${S[pt.k]===a.k}" aria-label="${pt.t}: ${a.label}" title="${a.label}" style="${a.k==='match'?'--c:'+col().c:'background:'+a.c}"></button>`).join('')+`</div></div>`}).join('');
+  $('styles').style.setProperty('--n',STYLES[S.len].length===4?2:3);
+  $('styles').innerHTML=STYLES[S.len].map(st=>`<button class="opt" type="button" data-style="${st.k}" aria-pressed="${S.style===st.k}"><svg viewBox="${vb(S.len,st.k)}" aria-hidden="true">${sock(S.len,st.k,'S'+st.k)}</svg><span class="t">${st.t}</span><small>${st.d}</small></button>`).join('');
+  const needEat=S.len==='high'&&S.style==='long';
+  $('catnote').textContent=needEat?'Long Cat uses a real photo of the cat eating. Only Tabby, Calico and Grey have one so far.':'';
+  $('cats').innerHTML=CATS.map(c=>`<button class="cat" type="button" data-cat="${c.id}" aria-pressed="${S.cat===c.id}"${needEat&&!c.eat?' disabled':''}><span class="ph"><img src="cats/${c.id}.webp" alt="${esc(c.name)}, a Mumbai street cat"></span><span>${esc(c.name)}</span></button>`).join('');
+  $('ncols').innerHTML=NCOL.map(a=>`<button class="ms" type="button" data-ncol="${a.k}" aria-pressed="${S.ncol===a.k}" aria-label="Name colour: ${a.label}" title="${a.label}" style="background:${a.c}"></button>`).join('');
+  $('ncl').textContent=(NCOL.find(a=>a.k===S.ncol)||NCOL[0]).label;
+  if(document.activeElement!==$('nm'))$('nm').value=S.name;
+  $('nm').placeholder=cat().name.toLowerCase();
+  $('cnt').textContent=S.name.length+'/12';
+  const st=STYLES[S.len].find(x=>x.k===S.style);
+  const an=k=>(ACC.find(a=>a.k===S[k])||ACC[0]).label;
+  $('sum').innerHTML=[S.len==='high'?'High':'Ankle',col().label,'Toe: '+an('toe'),'Heel: '+an('heel'),'Cuff: '+an('cuff'),'Name: '+(NCOL.find(a=>a.k===S.ncol)||NCOL[0]).label,st.t,'“'+esc(nameText())+'”'].map(x=>`<span>${x}</span>`).join('');
+  try{localStorage.setItem('meowsocks3',JSON.stringify(S))}catch(e){}
+}
+function summaryText(){const st=STYLES[S.len].find(x=>x.k===S.style);const an=k=>(ACC.find(a=>a.k===S[k])||ACC[0]).label.toLowerCase();
+ return `Meowmbai socks: ${S.len==='high'?'High':'Ankle'} length, ${col().label} base, ${an('toe')} toe, ${an('heel')} heel, ${an('cuff')} cuff, ${(NCOL.find(a=>a.k===S.ncol)||NCOL[0]).label.toLowerCase()} name, style "${st.t}" (${st.d.toLowerCase()}), cat photo DSC00${S.cat}, name "${nameText()}"`}
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.len){S.len=b.dataset.len;if(!STYLES[S.len].some(x=>x.k===S.style))S.style=STYLES[S.len][0].k;}
+  else if(b.dataset.col)S.col=b.dataset.col;
+  else if(b.dataset.part)S[b.dataset.part]=b.dataset.acc;
+  else if(b.dataset.ncol)S.ncol=b.dataset.ncol;
+  else if(b.dataset.style){S.style=b.dataset.style;if(S.style==='long'&&!cat().eat){S.cat='164';S.name='';$('note').textContent='Switched to Calico: Long Cat needs a photo of the cat eating.';}}
+  else if(b.dataset.cat){S.cat=b.dataset.cat;S.name='';}
+  else if(b.id==='rand'){const pk=a=>a[Math.floor(Math.random()*a.length)];S.len=pk(['high','ankle']);S.col=pk(COLS).k;S.style=pk(STYLES[S.len]).k;S.cat=pk(S.style==='long'?CATS.filter(c=>c.eat):CATS).id;S.ncol=pk(NCOL).k;S.name='';const a=pk(ACC).k;S.toe=a;S.heel=a;S.cuff=Math.random()>.5?a:pk(ACC).k;$('note').textContent='Ta-da! A brand new pair.';}
+  else if(b.id==='copy'){const t=summaryText();navigator.clipboard.writeText(t).then(()=>$('note').textContent='Copied! Paste it anywhere to share your pair.',()=>$('note').textContent=t);return;}
+  else return;
+  draw();
+});
+$('nm').addEventListener('input',e=>{const v=e.target.value.toLowerCase().slice(0,12);if(e.target.value!==v)e.target.value=v;S.name=v;draw();});
+draw();
+}
+</script>
+
+</body>
+</html>
